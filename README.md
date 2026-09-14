@@ -23,6 +23,15 @@ atom and shell, including chemically inequivalent atoms of the same species.
 Build the development branch using the normal FHI-aims CMake procedure for
 the target machine. No additional ACBN0-specific CMake option is required.
 
+The implementation described in this guide is available in the
+[`ACBN0` development branch of FHI-aims](https://aims-git.rz-berlin.mpg.de/aims/FHIaims/-/tree/ACBN0).
+The documented version corresponds to
+[commit `71c6f312`](https://aims-git.rz-berlin.mpg.de/aims/FHIaims/-/commit/71c6f312fea170ad95b5640b0460f545de6b0253),
+which can also be downloaded as a
+[ZIP source-code snapshot](https://aims-git.rz-berlin.mpg.de/aims/FHIaims/-/archive/71c6f312fea170ad95b5640b0460f545de6b0253/FHIaims-71c6f312fea170ad95b5640b0460f545de6b0253.zip).
+Access to these links requires permission for the private FHI-aims GitLab
+project.
+
 Record the branch name and exact commit hash together with calculated data.
 
 ## 3. Minimal input
