@@ -21,9 +21,7 @@ atom and shell, including chemically inequivalent atoms of the same species.
 ## 2. Building the code
 
 Build the development branch using the normal FHI-aims CMake procedure for
-the target machine. No additional ACBN0-specific CMake option is required:
-`acbn0_ERI_calc.f90` and `acbn0_renorm_density_matrix.f90` are already listed
-in `src/CMakeLists.txt`.
+the target machine. No additional ACBN0-specific CMake option is required.
 
 Record the branch name and exact commit hash together with calculated data.
 
@@ -85,7 +83,7 @@ integration grids, must also be supplied as appropriate for the system.
 ## 4. Selecting the double-counting treatment
 
 The global keyword `plus_u_petukhov_mixing` controls the interpolation between
-AMF and FLL:
+AMF and FLL, accordingly to the released FHI-aims version:
 
 ```text
 plus_u_petukhov_mixing 0.0   # AMF
@@ -158,8 +156,7 @@ Self-consistency cycle converged.
 ```
 
 The number of correlated subspaces should agree with the number of corrected
-atom-shell combinations. For chemically inequivalent atoms, do not replace
-the resulting atom-resolved values by a species average.
+atom-shell combinations. 
 
 Warnings about a zero or very small denominator require inspection. A zero
 exchange denominator is expected for an s shell, where the implementation
@@ -172,23 +169,19 @@ empty, full, one-electron, or numerically unstable corrected subspace.
    initialization. Competing spin states can lead to different self-consistent
    solutions.
 2. Use `plus_u_use_lowdin` for the calculations described with this
-   implementation. The default on-site and Mulliken projectors are not
-   numerically interchangeable with the Lowdin projector.
-3. Report the projector, parent exchange-correlation functional,
+   implementation. The default on-site and Mulliken projectors can produce
+   numerical instability.
+3. Set the projector, parent exchange-correlation functional,
    double-counting treatment, basis settings, integration grids, initial spin
    state, and SCF thresholds. The self-consistent Hubbard parameters depend on
    these choices.
-4. Check basis convergence for the target observable. A smaller basis can
-   assign more electronic weight to the selected Hubbard subspace and thereby
-   produce a stronger correction; this does not imply better numerical
-   convergence.
+4. A smaller basis can assign more electronic weight to the selected Hubbard 
+   subspace and thereby produce a stronger correction; this does not imply
+   better numerical convergence.
 5. For adsorption or reaction energies, apply a consistent ACBN0 setup to the
    clean surface, every adsorbate-covered structure, and all molecular
    references. Select the physically relevant corrected shells in each
    component of the energy cycle.
-6. For band structures or densities of states, first converge ACBN0 in the
-   ordinary SCF calculation. Preserve the converged physical state and Hubbard
-   parameters when carrying out the subsequent electronic-structure analysis.
 
 ## 8. Present limitations
 
